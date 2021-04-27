@@ -5,6 +5,17 @@ export default class PreloaderScene extends Phaser.Scene {
     super('Preloader');
   }
 
+  init() {
+    this.readyCount = 0;
+  }
+
+  ready() {
+    this.readyCount += 1;
+    if (this.readyCount === 2) {
+      this.scene.start('Title');
+    }
+  }
+
   preload() {
     this.add.image(400, 200, 'logo');
 
@@ -39,7 +50,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     const assetText = this.make.text({
       x: width / 2,
-      y: height / 2 + 50,
+      y: height / 2 + 170,
       text: '',
       style: {
         font: '18px monospace',
@@ -50,10 +61,10 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // update progress bar
     this.load.on('progress', (value) => {
-      percentText.setText(`${parseInt(value * 100)}%`);
+      percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+      progressBar.fillRect(245, 405, 310 * value, 40);
     });
 
     // update file progress text
@@ -61,19 +72,27 @@ export default class PreloaderScene extends Phaser.Scene {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
     this.load.on('complete', () => {
-      progressBar.destroy();
-      progressBox.destroy();
-      loadingText.destroy();
-      percentText.destroy();
-      assetText.destroy();
+      // progressBar.destroy();
+      loadingText.setText('Loading ✓');
+      // progressBox.destroy();
+      // loadingText.destroy();
+      // percentText.destroy();
+      // assetText.destroy();
+      this.ready();
     });
 
+    this.timedEvent = this.time.delayedCall(1, this.ready, [], this);
+
     // load assets needed in our game
-    this.load.image('blueButton1', 'assets/ui/blue_button02.png');
-    this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-    this.load.image('phaserLogo', 'assets/logo.png');
+    this.load.image('mainButton', './src/assets/ui/main_button.png');
+    this.load.image('mainButton-hover', './src/assets/ui/main_button_hover.png');
+    this.load.image('phaserLogo', './src/assets/bida_games_logo.png');
+
+    this.load.image('phaserLogo', './src/assets/bida_games_logo.png');
+    this.load.image('box', './src/assets/ui/grey_box.png');
+    this.load.image('checkedBox', './src/assets/ui/blue_boxCheckmark.png');
+    this.load.audio('bgMusic', ['./src/assets/TownTheme.mp3']);
   }
 
   create() {
