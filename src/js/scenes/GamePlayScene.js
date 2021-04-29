@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import conf from '../config/gameConfig';
 import options from '../config/gameOptions';
+import spawnObstacle from '../actions/spawnObstacle';
 
 export default class GamePlayScene extends Phaser.Scene {
   constructor() {
@@ -8,7 +9,6 @@ export default class GamePlayScene extends Phaser.Scene {
   }
 
   preload() {
-
   }
 
   // addPlatform(platformWidth, posX) {
@@ -29,18 +29,19 @@ export default class GamePlayScene extends Phaser.Scene {
   //   this.nextPlatformDistance = Phaser.Math.Between(options.spawnRange[0], options.spawnRange[1]);
   // }
 
-  // jump() {
-  //   if (this.player.body.touching.down
-  //     || (this.playerJumps > 0 && this.playerJumps < options.jumps)) {
-  //     if (this.player.body.touching.down) {
-  //       this.playerJumps = 0;
-  //     }
-  //     this.player.setVelocityY(options.jumpForce * -1);
-  //     this.playerJumps += 1;
-  //   }
-  // }
+  jump() {
+    if (this.player.body.touching.down
+      || (this.playerJumps > 0 && this.playerJumps < options.jumps)) {
+      if (this.player.body.touching.down) {
+        this.playerJumps = 0;
+      }
+      this.player.setVelocityY(options.jumpForce * -1);
+      this.playerJumps += 1;
+    }
+  }
 
   create() {
+    this.gameSpeed = 1;
     this.background = this.physics.add.image(0, conf.height / 2, 'background').setOrigin(0, 0.5);
     this.background2 = this.physics.add.image(1600, conf.height / 2, 'background').setOrigin(0, 0.5);
     this.background.setVelocityX(-90);
@@ -50,6 +51,7 @@ export default class GamePlayScene extends Phaser.Scene {
 
     this.player = this.physics.add.sprite(options.playerStartPosition, conf.height / 2, 'player').setScale(3).refreshBody();
     this.player.setGravityY(options.playerGravity);
+    this.player.body.setSize(16, 30);
     this.anims.create({
       key: 'run',
       frames: this.anims.generateFrameNumbers('player', { start: 0, end: 1 }),
@@ -59,6 +61,9 @@ export default class GamePlayScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.ground);
     this.player.play('run');
+
+    this.obstacle = spawnObstacle(this, Phaser.Math.Between(...options.obstacleHeight));
+    this.physics.add.collider(this.player, this.obstacle);
     // this.physics.add.collider(this.player, this.ground);
 
     // group with all active platforms.
@@ -96,7 +101,8 @@ export default class GamePlayScene extends Phaser.Scene {
     // this.physics.add.collider(this.player, this.platformGroup);
 
     // checking for input
-    // this.input.on('pointerdown', this.jump, this);
+    this.input.on('pointerdown', this.jump, this);
+    this.input.keyboard.on('keydown-SPACE', this.jump, this);
   }
 
   update() {
@@ -106,12 +112,21 @@ export default class GamePlayScene extends Phaser.Scene {
     if (this.background2.x <= -1600) {
       this.background2.setX(this.background.x + 1600);
     }
+
+    if (this.obstacle.x <= -120) {
+      this.gameSpeed *= 1.02;
+      this.obstacle.setX(920);
+      this.obstacle.setY(Phaser.Math.Between(...options.obstacleHeight));
+      this.obstacle.setVelocityX(0 - (Phaser.Math.Between(...options.obstacleSpeed) * this.gameSpeed));
+      this.background.setVelocityX(-90 * this.gameSpeed);
+      this.background2.setVelocityX(-90 * this.gameSpeed);
+    }
     // this.background.tilePosition.x = -(this.camera.x * 1);
-  //   // game over
-  //   if (this.player.y > conf.height) {
-  //     this.scene.start('GamePlay');
-  //   }
-  //   this.player.x = options.playerStartPosition;
+    //   // game over
+    if (this.player.y > conf.height) {
+      this.scene.start('GamePlay');
+    }
+    //   this.player.x = options.playerStartPosition;
 
     //   // recycling platforms
     //   let minDistance = conf.width;
