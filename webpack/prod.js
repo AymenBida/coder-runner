@@ -6,9 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  output: {
-    filename: 'bundle.min.js',
-  },
   devtool: false,
   performance: {
     maxEntrypointSize: 900000,
