@@ -1,4 +1,4 @@
-export default function () {
+export default function fn() {
   const h1 = document.querySelector('h1');
   const div = document.querySelector('div');
   const para = document.querySelector('p');

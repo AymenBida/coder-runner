@@ -15,7 +15,7 @@ const sortScores = (data) => data.sort((a, b) => {
   return -1;
 });
 
-export default function () {
+export default function fn() {
   return getScores()
     .then((response) => response.json())
     .then((data) => {

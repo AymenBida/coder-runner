@@ -82,7 +82,6 @@ export default class GamePlayScene extends Phaser.Scene {
       this.background2.setVelocityX(-90 * this.gameSpeed);
     }
 
-
     if (this.player.y > conf.height) {
       this.add.image(400, 300, 'bsod');
       if (this.counter === 0 && this.score > 0) {

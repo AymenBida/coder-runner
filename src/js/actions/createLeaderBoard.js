@@ -1,4 +1,4 @@
-export default function (data) {
+export default function fn(data) {
   const body = document.querySelector('body');
 
   const h1 = document.createElement('h2');
