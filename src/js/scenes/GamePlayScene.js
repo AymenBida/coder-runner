@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import conf from '../config/gameConfig';
 import options from '../config/gameOptions';
 import spawnObstacle from '../actions/spawnObstacle';
+import sendScore from '../actions/sendScore';
 
 export default class GamePlayScene extends Phaser.Scene {
   constructor() {
@@ -40,10 +41,18 @@ export default class GamePlayScene extends Phaser.Scene {
     }
   }
 
+  nextScene() {
+    this.scene.start('LeaderBoard');
+  }
+
   create() {
+    this.counter = 0;
+    this.score = 0;
+    this.scoreText = `Score = ${this.score}`;
     this.gameSpeed = 1;
     this.background = this.physics.add.image(0, conf.height / 2, 'background').setOrigin(0, 0.5);
     this.background2 = this.physics.add.image(1600, conf.height / 2, 'background').setOrigin(0, 0.5);
+    this.scoreObj = this.add.text(20, 16, this.scoreText, { fontSize: '32px', fill: '#000' });
     this.background.setVelocityX(-90);
     this.background2.setVelocityX(-90);
 
@@ -114,18 +123,35 @@ export default class GamePlayScene extends Phaser.Scene {
     }
 
     if (this.obstacle.x <= -120) {
-      this.gameSpeed *= 1.02;
+      if (this.player.x > 0) {
+        this.score += 1;
+      }
+      this.scoreText = `Score = ${this.score}`;
+      this.scoreObj.setText(this.scoreText);
+      this.gameSpeed *= 1.01;
       this.obstacle.setX(920);
       this.obstacle.setY(Phaser.Math.Between(...options.obstacleHeight));
       this.obstacle.setVelocityX(0 - (Phaser.Math.Between(...options.obstacleSpeed) * this.gameSpeed));
       this.background.setVelocityX(-90 * this.gameSpeed);
       this.background2.setVelocityX(-90 * this.gameSpeed);
     }
+
+
+    if (this.player.y > conf.height) {
+      this.add.image(400, 300, 'bsod');
+      if (this.counter === 0 && this.score > 0) {
+        this.counter = 1;
+        sendScore(window.playerName, this.score)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Success:', data);
+          });
+      }
+      this.timedEvent = this.time.delayedCall(1000, this.nextScene, [], this);
+    }
     // this.background.tilePosition.x = -(this.camera.x * 1);
     //   // game over
-    if (this.player.y > conf.height) {
-      this.scene.start('GamePlay');
-    }
+
     //   this.player.x = options.playerStartPosition;
 
     //   // recycling platforms

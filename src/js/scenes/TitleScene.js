@@ -1,5 +1,8 @@
 import Phaser from 'phaser';
 import conf from '../config/gameConfig';
+import createForm from '../actions/createForm';
+import destroyForm from '../actions/destroyForm';
+import getName from '../actions/getName';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
@@ -34,6 +37,8 @@ export default class TitleScene extends Phaser.Scene {
     this.centerButtonText(this.gameText, this.gameButton);
 
     this.gameButton.on('pointerdown', () => {
+      window.playerName = getName();
+      destroyForm();
       this.scene.start('GamePlay');
     });
 
@@ -44,27 +49,30 @@ export default class TitleScene extends Phaser.Scene {
     this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('mainButton');
     });
+    
+    createForm();
+
 
     // Options
-    this.optionsButton = this.add.sprite(300, 200, 'mainButton').setInteractive();
-    this.centerButton(this.optionsButton);
+    // this.optionsButton = this.add.sprite(300, 200, 'mainButton').setInteractive();
+    // this.centerButton(this.optionsButton);
 
-    this.optionsText = this.add.text(0, 0, 'Options', { fontSize: '32px', fill: '#fff' });
-    this.centerButtonText(this.optionsText, this.optionsButton);
+    // this.optionsText = this.add.text(0, 0, 'Options', { fontSize: '32px', fill: '#fff' });
+    // this.centerButtonText(this.optionsText, this.optionsButton);
 
-    this.optionsButton.on('pointerdown', () => {
-      this.scene.start('Options');
-    });
+    // this.optionsButton.on('pointerdown', () => {
+    //   this.scene.start('Options');
+    // });
 
-    // Credits
-    this.creditsButton = this.add.sprite(300, 200, 'mainButton').setInteractive();
-    this.centerButton(this.creditsButton, -1);
+    // // Credits
+    // this.creditsButton = this.add.sprite(300, 200, 'mainButton').setInteractive();
+    // this.centerButton(this.creditsButton, -1);
 
-    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
-    this.centerButtonText(this.creditsText, this.creditsButton);
+    // this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
+    // this.centerButtonText(this.creditsText, this.creditsButton);
 
-    this.creditsButton.on('pointerdown', () => {
-      this.scene.start('Credits');
-    });
+    // this.creditsButton.on('pointerdown', () => {
+    //   this.scene.start('Credits');
+    // });
   }
 }

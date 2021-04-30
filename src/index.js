@@ -4,6 +4,7 @@ import GameScene from './js/scenes/GameScene';
 import PreloaderScene from './js/scenes/PreloaderScene';
 import TitleScene from './js/scenes/TitleScene';
 import GamePlayScene from './js/scenes/GamePlayScene';
+import LeaderBoardScene from './js/scenes/LeaderBoardScene';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -12,11 +13,14 @@ class Game extends Phaser.Game {
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
     this.scene.add('GamePlay', GamePlayScene);
+    this.scene.add('LeaderBoard', LeaderBoardScene);
     this.scene.start('Game');
   }
 }
 
 window.game = new Game();
+const canvas = document.querySelector('canvas');
+canvas.classList.add('centered');
 
 // function preload() {
 //   this.load.image('sky', './src/assets/sky.png');

@@ -96,6 +96,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('obstacle', './src/assets/obstacle.png');
     this.load.image('ground', './src/assets/ground.png');
     this.load.image('background', './src/assets/background.png');
+    this.load.image('bsod', './src/assets/bsod.png');
     this.load.spritesheet('player',
       './src/assets/coder_spritesheet.png',
       { frameWidth: 25, frameHeight: 31 });

@@ -1,0 +1,35 @@
+.contain {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered {
+  top: calc(50% - 300px);
+  right: calc(50% - 400px);
+  position: absolute;
+  display: block;
+}
+
+.nameForm {
+  top: 60%;
+  width: 200px;
+  right: calc(50% - 100px);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nameForm__label {
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
+.nameForm__input {
+  width: 100%;
+  text-align: center;
+}
