@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 import mainButton from '../../assets/ui/main_button.png';
 import mainButtonHover from '../../assets/ui/main_button_hover.png';
-import bidaGamesLogo from '../../assets/bida_games_logo.png';
 import obstacle from '../../assets/obstacle.png';
 import ground from '../../assets/ground.png';
 import background from '../../assets/background.png';
@@ -87,7 +86,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image('mainButton', mainButton);
     this.load.image('mainButton-hover', mainButtonHover);
-    this.load.image('phaserLogo', bidaGamesLogo);
     this.load.image('obstacle', obstacle);
     this.load.image('ground', ground);
     this.load.image('background', background);

@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import bidaGamesLogo from '../../assets/bida_games_logo.png';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -6,7 +7,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('logo', './src/assets/bida_games_logo.png');
+    this.load.image('logo', bidaGamesLogo);
   }
 
   create() {
