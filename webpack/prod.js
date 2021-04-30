@@ -1,7 +1,9 @@
-// eslint-disable import/no-unresolved
+// eslint-disable-next-line import/no-unresolved
 const webpack = require('webpack');
 const path = require('path');
+// eslint-disable-next-line import/no-unresolved
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// eslint-disable-next-line import/no-unresolved
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
