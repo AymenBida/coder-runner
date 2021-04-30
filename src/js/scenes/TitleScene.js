@@ -17,7 +17,6 @@ export default class TitleScene extends Phaser.Scene {
       gameButton,
     );
   }
-  // eslint-enable-next-line class-methods-use-this
 
   create() {
     createTitle();

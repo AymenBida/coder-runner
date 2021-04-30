@@ -5,6 +5,7 @@ import PreloaderScene from './js/scenes/PreloaderScene';
 import TitleScene from './js/scenes/TitleScene';
 import GamePlayScene from './js/scenes/GamePlayScene';
 import LeaderBoardScene from './js/scenes/LeaderBoardScene';
+// eslint-disable-next-line no-unused-vars
 import css from './css/styles.css';
 
 

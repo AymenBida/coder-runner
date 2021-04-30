@@ -1,6 +1,12 @@
 import Phaser from 'phaser';
 import mainButton from '../../assets/ui/main_button.png';
 import mainButtonHover from '../../assets/ui/main_button_hover.png';
+import bidaGamesLogo from '../../assets/bida_games_logo.png';
+import obstacle from '../../assets/obstacle.png';
+import ground from '../../assets/ground.png';
+import background from '../../assets/background.png';
+import bsod from '../../assets/bsod.png';
+import player from '../../assets/coder_spritesheet.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -81,13 +87,13 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image('mainButton', mainButton);
     this.load.image('mainButton-hover', mainButtonHover);
-    this.load.image('phaserLogo', './src/assets/bida_games_logo.png');
-    this.load.image('obstacle', './src/assets/obstacle.png');
-    this.load.image('ground', './src/assets/ground.png');
-    this.load.image('background', './src/assets/background.png');
-    this.load.image('bsod', './src/assets/bsod.png');
+    this.load.image('phaserLogo', bidaGamesLogo);
+    this.load.image('obstacle', obstacle);
+    this.load.image('ground', ground);
+    this.load.image('background', background);
+    this.load.image('bsod', bsod);
     this.load.spritesheet('player',
-      './src/assets/coder_spritesheet.png',
+      player,
       { frameWidth: 25, frameHeight: 31 });
   }
 }
