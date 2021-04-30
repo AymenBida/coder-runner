@@ -7,21 +7,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'production',
   devtool: false,
-  performance: {
-    maxEntrypointSize: 900000,
-    maxAssetSize: 900000,
-  },
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false,
-          },
-        },
-      }),
-    ],
-  },
   module: {
     rules: [
       {
