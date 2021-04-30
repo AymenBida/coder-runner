@@ -20,6 +20,13 @@ module.exports = {
         use: 'raw-loader',
       },
       {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.(gif|png|jpe?g|svg|xml)$/i,
         use: 'file-loader',
       },
