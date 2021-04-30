@@ -1,26 +1,32 @@
-## Title
+## Coder Runner
 
-> brief description
+> Endless runner game made with phaser JS
 
+![screenshot](./screenshot.png)
+
+- Endless runner game where you control a software developer that is running and avoiding errors
+- Press SPACE or LEFT MOUSE keys to jump
+- You can press again to double jump
+- You can step on errors or touch them but be careful not to be pushed away
 ## Built With 
 
 - JavaScript, HTML5 and Bootstrap
 
+## Live Demo
+
+[Live Demo Link](https://competent-visvesvaraya-c58dd1.netlify.app/)
+### Prerequisites
+
+- Modern Browser (Chrome, Firefox...)
+- Node.js
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-- git clone `git@github.com:AymenBida/<repo>.git`
-- cd into the `<repo>`
-- open `index.html` 
-
-### Prerequisites
-
-- Get a browser like Chrome and Firefox in their most recent versions
-
-### Install
-
-- Install VSCode or any code editor you prefer
+- clone the repo into a folder of your choice : `git clone git@github.com:AymenBida/Coder-Runner.git`
+- `cd Coder-Runner`
+- `npm install`
+- `npm run start`
 
 # Author
 
@@ -34,11 +40,12 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/AymenBida/<repo>/issues).
+Feel free to check the [issues page](https://github.com/AymenBida/Coder-Runner/issues).
 
 ## Acknowledgments
 
-If any
+- VectorStock.com for the ground PixelArt
+- Microverse for the ReadMe template
 
 ## Show your support
 
