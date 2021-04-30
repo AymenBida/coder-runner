@@ -9,27 +9,6 @@ export default class GamePlayScene extends Phaser.Scene {
     super('GamePlay');
   }
 
-  preload() {
-  }
-
-  // addPlatform(platformWidth, posX) {
-  //   let platform;
-  //   if (this.platformPool.getLength()) {
-  //     platform = this.platformPool.getFirst();
-  //     platform.x = posX;
-  //     platform.active = true;
-  //     platform.visible = true;
-  //     this.platformPool.remove(platform);
-  //   } else {
-  //     platform = this.physics.add.sprite(posX, conf.height * 0.8, 'platform');
-  //     platform.setImmovable(true);
-  //     platform.setVelocityX(options.platformStartSpeed * -1);
-  //     this.platformGroup.add(platform);
-  //   }
-  //   platform.displayWidth = platformWidth;
-  //   this.nextPlatformDistance = Phaser.Math.Between(options.spawnRange[0], options.spawnRange[1]);
-  // }
-
   jump() {
     if (this.player.body.touching.down
       || (this.playerJumps > 0 && this.playerJumps < options.jumps)) {
@@ -73,43 +52,9 @@ export default class GamePlayScene extends Phaser.Scene {
 
     this.obstacle = spawnObstacle(this, Phaser.Math.Between(...options.obstacleHeight));
     this.physics.add.collider(this.player, this.obstacle);
-    // this.physics.add.collider(this.player, this.ground);
 
-    // group with all active platforms.
-    // this.platformGroup = this.add.group({
-
-    //   // once a platform is removed, it's added to the pool
-    //   removeCallback(platform) {
-    //     platform.scene.platformPool.add(platform);
-    //   },
-    // });
-    // if (!this.player.body.touching.down) {
-    //   this.player.play('run');
-    //   // this.player.stop('run');
-    // } else {
-
-    // }
-
-    // pool
-    // this.platformPool = this.add.group({
-
-    //   // once a platform is removed from the pool, it's added to the active platforms group
-    //   removeCallback(platform) {
-    //     platform.scene.platformGroup.add(platform);
-    //   },
-    // });
-
-    // number of consecutive jumps made by the player
     this.playerJumps = 0;
 
-    // adding a platform to the game, the arguments are platform width and x position
-    // this.addPlatform(conf.width, conf.width / 2);
-
-
-    // setting collisions between the player and the platform group
-    // this.physics.add.collider(this.player, this.platformGroup);
-
-    // checking for input
     this.input.on('pointerdown', this.jump, this);
     this.input.keyboard.on('keydown-SPACE', this.jump, this);
   }
@@ -131,7 +76,8 @@ export default class GamePlayScene extends Phaser.Scene {
       this.gameSpeed *= 1.01;
       this.obstacle.setX(920);
       this.obstacle.setY(Phaser.Math.Between(...options.obstacleHeight));
-      this.obstacle.setVelocityX(0 - (Phaser.Math.Between(...options.obstacleSpeed) * this.gameSpeed));
+      this.obstacle
+        .setVelocityX(0 - (Phaser.Math.Between(...options.obstacleSpeed) * this.gameSpeed));
       this.background.setVelocityX(-90 * this.gameSpeed);
       this.background2.setVelocityX(-90 * this.gameSpeed);
     }
@@ -143,34 +89,12 @@ export default class GamePlayScene extends Phaser.Scene {
         this.counter = 1;
         sendScore(window.playerName, this.score)
           .then((response) => response.json())
-          .then((data) => {
-            console.log('Success:', data);
+          .then(() => {
+            this.timedEvent = this.time.delayedCall(500, this.nextScene, [], this);
           });
+      } else {
+        this.timedEvent = this.time.delayedCall(1000, this.nextScene, [], this);
       }
-      this.timedEvent = this.time.delayedCall(1000, this.nextScene, [], this);
     }
-    // this.background.tilePosition.x = -(this.camera.x * 1);
-    //   // game over
-
-    //   this.player.x = options.playerStartPosition;
-
-    //   // recycling platforms
-    //   let minDistance = conf.width;
-    //   this.platformGroup.getChildren().forEach(function fn(platform) {
-    //     const platformDistance = conf.width - platform.x - platform.displayWidth / 2;
-    //     minDistance = Math.min(minDistance, platformDistance);
-    //     if (platform.x < -platform.displayWidth / 2) {
-    //       this.platformGroup.killAndHide(platform);
-    //       this.platformGroup.remove(platform);
-    //     }
-    //   }, this);
-
-  //   // adding new platforms
-  //   if (minDistance > this.nextPlatformDistance) {
-  //     const nextPlatformWidth = Phaser.Math
-  //       .Between(options.platformSizeRange[0], options.platformSizeRange[1]);
-  //     this.addPlatform(nextPlatformWidth, conf.width + nextPlatformWidth / 2);
-  //   }
-  // }
   }
 }

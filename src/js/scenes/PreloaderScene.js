@@ -59,7 +59,6 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     assetText.setOrigin(0.5, 0.5);
 
-    // update progress bar
     this.load.on('progress', (value) => {
       percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
@@ -67,32 +66,20 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(245, 405, 310 * value, 40);
     });
 
-    // update file progress text
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
     this.load.on('complete', () => {
-      // progressBar.destroy();
       loadingText.setText('Loading ✓');
-      // progressBox.destroy();
-      // loadingText.destroy();
-      // percentText.destroy();
-      // assetText.destroy();
       this.ready();
     });
 
-    this.timedEvent = this.time.delayedCall(1, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(2500, this.ready, [], this);
 
-    // load assets needed in our game
     this.load.image('mainButton', './src/assets/ui/main_button.png');
     this.load.image('mainButton-hover', './src/assets/ui/main_button_hover.png');
     this.load.image('phaserLogo', './src/assets/bida_games_logo.png');
-
-    this.load.image('phaserLogo', './src/assets/bida_games_logo.png');
-    this.load.image('box', './src/assets/ui/grey_box.png');
-    this.load.image('checkedBox', './src/assets/ui/blue_boxCheckmark.png');
-    // this.load.audio('bgMusic', ['./src/assets/TownTheme.mp3']);
     this.load.image('obstacle', './src/assets/obstacle.png');
     this.load.image('ground', './src/assets/ground.png');
     this.load.image('background', './src/assets/background.png');
@@ -100,8 +87,5 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.spritesheet('player',
       './src/assets/coder_spritesheet.png',
       { frameWidth: 25, frameHeight: 31 });
-  }
-
-  create() {
   }
 }
