@@ -1,4 +1,4 @@
-const gameId = 'FjYWSJ9EIym5ICtZImvy';
+const gameId = 'Sll7UCeqfTqPw1sufaRM';
 
 const getScores = () => fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores`);
 
