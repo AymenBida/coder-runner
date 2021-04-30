@@ -7,6 +7,7 @@ import GamePlayScene from './js/scenes/GamePlayScene';
 import LeaderBoardScene from './js/scenes/LeaderBoardScene';
 import css from './css/styles.css';
 
+
 class Game extends Phaser.Game {
   constructor() {
     super(config);
