@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
 import createForm from '../actions/createForm';
 import destroyForm from '../actions/destroyForm';

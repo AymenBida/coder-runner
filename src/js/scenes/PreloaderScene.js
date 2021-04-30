@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
 import mainButton from '../../assets/ui/main_button.png';
 import mainButtonHover from '../../assets/ui/main_button_hover.png';

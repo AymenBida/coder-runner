@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
 import config from './js/config/gameConfig';
 import GameScene from './js/scenes/GameScene';
