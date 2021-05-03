@@ -11,14 +11,33 @@ export default class GamePlayScene extends Phaser.Scene {
   }
 
   jump() {
-    if (this.player.body.touching.down
-      || (this.playerJumps > 0 && this.playerJumps < options.jumps)) {
-      if (this.player.body.touching.down) {
-        this.playerJumps = 0;
+    if (this.playerOnSomething() || (this.playerJumped() && this.playerCanStillJump())) {
+      if (this.playerOnSomething()) {
+        this.resetJumps();
       }
-      this.player.setVelocityY(options.jumpForce * -1);
-      this.playerJumps += 1;
+      this.launchPlayer();
     }
+  }
+
+  playerOnSomething() {
+    return (this.player.body.touching.down);
+  }
+
+  playerJumped() {
+    return (this.playerJumps > 0);
+  }
+
+  playerCanStillJump() {
+    return (this.playerJumps < options.jumps);
+  }
+
+  resetJumps() {
+    this.playerJumps = 0;
+  }
+
+  launchPlayer() {
+    this.player.setVelocityY(options.jumpForce * -1);
+    this.playerJumps += 1;
   }
 
   nextScene() {

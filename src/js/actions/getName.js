@@ -1,6 +1,6 @@
-export default function fn() {
-  const input = document.querySelector('input');
-  if (input.value === '') { return 'unknown'; }
+const findInputValue = () => document.querySelector('input').value;
 
-  return input.value;
+export default function fn() {
+  if (findInputValue() === '') { return 'unknown'; }
+  return findInputValue();
 }
