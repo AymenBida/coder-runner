@@ -1,4 +1,4 @@
-### Codder Runner
+# Codder Runner
 
 ## Concept
 
@@ -9,7 +9,7 @@
 - You will be able to jump or to double jump to avoid the obstacles that will come for you and defeat you.
 - The longer you stay alive the higher your score will be
 
-# Elements
+## Elements
 
 - Character: It will be a running software developer with the ability to jump and to double jump + some ability that I will add if I will have the time
 
