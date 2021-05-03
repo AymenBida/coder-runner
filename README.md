@@ -8,6 +8,8 @@
 - Press SPACE or LEFT MOUSE keys to jump
 - You can press again to double jump
 - You can step on errors or touch them but be careful not to be pushed away
+
+You can check the game design document by following [this link](./GDD.md)
 ## Built With 
 
 - JavaScript, HTML5 and Bootstrap
@@ -15,6 +17,7 @@
 ## Live Demo
 
 [Live Demo Link](https://competent-visvesvaraya-c58dd1.netlify.app/)
+
 ### Prerequisites
 
 - Modern Browser (Chrome, Firefox...)
