@@ -23,6 +23,6 @@
 > Image:
 ![screenshot](./src/assets/ground.png)
 
--Background: A scrolling background with buildings
+- Background: A scrolling background with buildings
 > Image:
 ![screenshot](./src/assets/background.png)
