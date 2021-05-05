@@ -4,6 +4,7 @@ import conf from '../config/gameConfig';
 import options from '../config/gameOptions';
 import spawnObstacle from '../actions/spawnObstacle';
 import sendScore from '../actions/sendScore';
+import 'regenerator-runtime';
 
 export default class GamePlayScene extends Phaser.Scene {
   constructor() {
@@ -89,7 +90,7 @@ export default class GamePlayScene extends Phaser.Scene {
 
     if (this.obstacle.x <= -120) {
       if (this.player.x > 0) {
-        this.score += 1;
+        this.score += 10;
       }
       this.scoreText = `Score = ${this.score}`;
       this.scoreObj.setText(this.scoreText);
@@ -107,7 +108,6 @@ export default class GamePlayScene extends Phaser.Scene {
       if (this.counter === 0 && this.score > 0) {
         this.counter = 1;
         sendScore(window.playerName, this.score)
-          .then((response) => response.json())
           .then(() => {
             this.timedEvent = this.time.delayedCall(500, this.nextScene, [], this);
           });
