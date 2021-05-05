@@ -91,7 +91,7 @@ export default class GamePlayScene extends Phaser.Scene {
 
     if (this.obstacle.x <= -120) {
       if (this.player.x > 0) {
-        this.score += 10;
+        this.score += 1;
       }
       this.scoreText = `Score = ${this.score}`;
       this.scoreObj.setText(this.scoreText);
