@@ -31,6 +31,12 @@ To get a local copy up and running follow these simple example steps.
 - `npm install`
 - `npm run start`
 
+## Test
+
+To run tests, run the following command in the terminal (while in the root directory):
+
+- `npm test`
+
 # Author
 
 👤 **Aymen Bida**

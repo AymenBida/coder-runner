@@ -6,8 +6,9 @@
 
 ## Game play
 
-- You will be able to jump or to double jump to avoid the obstacles that will come for you and defeat you.
-- The longer you stay alive the higher your score will be
+- You will be able to jump by pressing SPACE or LEFT MOUSE KEY to avoid being pushed back by the obstacles
+- You can press the buttons while in the air to perform a double jump also
+- The longer you stay alive the higher your score will be but the game will be gradually faster
 
 ## Elements
 
