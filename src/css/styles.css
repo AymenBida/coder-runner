@@ -1,0 +1,71 @@
+.contain {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered {
+  top: calc(50% - 300px);
+  right: calc(50% - 400px);
+  position: absolute;
+  display: block;
+}
+
+.nameForm {
+  top: 63%;
+  width: 200px;
+  right: calc(50% - 100px);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nameForm__label {
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
+.nameForm__input {
+  width: 100%;
+  text-align: center;
+}
+
+.leaderBoard {
+  color: white;
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: calc(50% - 225px);
+  right: calc(50% - 250px);
+}
+
+.leaderBoard__title {
+  color: white;
+  font-weight: 900;
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 280px);
+  right: calc(50% - 100px);
+}
+
+.credits {
+  color: rgb(255, 226, 255);
+  font-weight: 700;
+  font-size: 1.3em;
+  position: absolute;
+  top: calc(50% + 245px);
+  right: calc(50% - 370px);
+}
+
+.titleDiv {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 163px);
+  right: calc(50% - 324px);
+  width: 648px;
+}
