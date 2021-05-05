@@ -11,7 +11,18 @@
 
 ## Elements
 
-- Character: It will be a running software developer with the ability to jump and to double jump + some ability that I will add if I will have the time
+- Character: A running software developer with the ability to jump and to double jump
+> The character animation consists of two sprites:
+![screenshot](./src/assets/coder_spritesheet.png)
 
-- Obstacles: It will be pieces of code probably flying into you in different heights that you will have to avoid them by jumping.
+- Obstacles: Little platforms with the word `ERROR` on them flying towards the character to push him away
+> Sprite:
+![screenshot](./src/assets/obstacle.png)
 
+- Ground: The ground the character is running on
+> Image:
+![screenshot](./src/assets/ground.png)
+
+-Background: A scrolling background with buildings
+> Image:
+![screenshot](./src/assets/background.png)
