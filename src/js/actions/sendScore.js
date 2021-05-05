@@ -1,4 +1,4 @@
-const gameId = 'Sll7UCeqfTqPw1sufaRM';
+const gameId = 'LQBfhB6zhSqtOnVmEX77';
 
 export default async function fn(user, score) {
   try {
