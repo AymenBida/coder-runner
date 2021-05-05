@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { expect, it } from '@jest/globals';
 import sortScores from '../src/js/actions/sortScores';
 

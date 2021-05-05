@@ -4,6 +4,7 @@ import conf from '../config/gameConfig';
 import options from '../config/gameOptions';
 import spawnObstacle from '../actions/spawnObstacle';
 import sendScore from '../actions/sendScore';
+// eslint-disable-next-line import/no-unresolved
 import 'regenerator-runtime';
 
 export default class GamePlayScene extends Phaser.Scene {

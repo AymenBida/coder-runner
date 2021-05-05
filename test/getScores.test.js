@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
 import 'regenerator-runtime';
+// eslint-disable-next-line import/no-unresolved
 import { expect } from '@jest/globals';
 import getScores from '../src/js/actions/getScores';
 

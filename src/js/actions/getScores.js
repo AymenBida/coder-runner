@@ -1,6 +1,6 @@
 const gameId = 'Sll7UCeqfTqPw1sufaRM';
 
-export default async function () {
+export default async function fn() {
   try {
     const getScore = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores`);
     return await getScore.json();

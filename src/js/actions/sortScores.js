@@ -1,4 +1,4 @@
-export default function (data) {
+export default function fn(data) {
   const sorted = data.sort((a, b) => {
     if (a.score < b.score) {
       return 1;
