@@ -9,10 +9,10 @@ beforeEach(() => {
 });
 
 it('Send the score using the API', async () => {
-  fetch.mockResponseOnce(JSON.stringify([{ result: 'Leaderboard score created correctly.' }]));
+  fetch.mockResponseOnce(JSON.stringify(''));
   const onResponse = jest.fn();
   const onError = jest.fn();
-  return sendScore('Player', '55')
+  return sendScore('55')
     .then(onResponse)
     .catch(onError)
     .finally(() => {
