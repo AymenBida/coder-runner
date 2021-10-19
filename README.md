@@ -16,7 +16,7 @@ You can check the game design document by following [this link](./GDD.md)
 
 ## Live Demo
 
-[Live Demo Link](https://competent-visvesvaraya-c58dd1.netlify.app/)
+[Live Demo Link](https://coder-runner.netlify.app/)
 
 ### Prerequisites
 
